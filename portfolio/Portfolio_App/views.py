@@ -49,35 +49,3 @@ class ProjektasListView(ListView):
 #         projektas = Projektas.objects.all()
 #         return render(request, 'Portfolio_App/projektas_list.html', {'projektas': projektas})
 
-
-
-
-
-
-
-
-
-
-
-# class ProjektasDetailView(DetailView):
-#     model = Projektas
-#     context_object_name = "projektas"
-#
-#     def post(self, request, pk):
-#         iliustracija = request.POST.get('paveikslėlis')
-#         pavadinimas = request.POST.get('projekto pavadinimas')
-#         aprašymas = request.POST.get('informacija apie projektą')
-#         technologiju_sarasas = request.POST.get('naudojamos technologijos')
-#         projekto_svetaine = request.POST.get('svetaines adresas')
-#         githubo_nuoroda = request.POST.get('githubo nuoroda')
-#
-#         if pavadinimas.isnumeric():
-#             messages.error(request, "Skaičių vesti negalima")
-#             return redirect(f"/Portfolio_App/{pk}")
-#         if len(technologiju_sarasas) == 0:
-#             messages.error(request, "Technologijų sąrašas turi būti užpildytas")
-#             return redirect(f"/events/{pk}")
-#         projektas = get_object_or_404(Projektas, pk=pk)
-#
-#
-#

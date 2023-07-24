@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+     {% block "title" %}<title>Mano projektai</title>{% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Add additional CSS in static file -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Portfolio_App/css/style.css' %}">
+
+<header>
+    <h1 class="text">Mano darbai</h1>
+</header>
+
+</head>
+<body>
+          {% block sidebar %}
+            <ul class="sidebar-nav">
+                  <li><a href="{% url 'profiliai' %}">Prisistatymo puslapis</a></li>
+                  <li><a href="{% url 'projekto-info' %}">Mano darbų puslapis</a></li>
+            </ul>
+     {% endblock %}
+      </div>
+      <div class="col-sm-10 ">{% block "content" %}  {% endblock %}</div>
+    </div>
+  </div>
+</body>
+
+
+
+
+<footer>
+   <span>2023&copy; Visos teisės saugomos</span>
+</footer>
+</html>

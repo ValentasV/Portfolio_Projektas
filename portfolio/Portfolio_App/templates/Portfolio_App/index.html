@@ -1,0 +1,34 @@
+{% extends "Portfolio_App/base.html" %}
+{% load static %}
+{% block "content" %}
+
+
+
+<h1 id="nulis">Profilio Informacija</h1> <br>
+
+
+  <ul>
+  {% for x in profilis %}
+    <li>
+        <br>{{ x.vardas }}
+        <br>
+        <br>{{ x.pavarde }}
+        <br>
+        <br>{{ x.trumpas_prisistatymas }}
+        <br>
+        <br><img src="{% static 'Portfolio_App/images/Logo.png' %}" alt="Logotipas">
+        <br>
+        <br><a href="{{x.socialinis_tinklas_linkedin}}" target="_blank">
+            <img src="{% static 'Portfolio_App/images/linkedinB.jpg' %}"  alt="Linkedin" style="width:50px;">
+            </a>
+        <br>
+        <br><a href="{{x.socialinis_tinklas_github}}" target="_blank">
+            <img src="{% static 'Portfolio_App/images/github.png' %}" alt="Github" style="width:50px;">
+            </a>
+
+    </li>
+
+  {% endfor %}
+  </ul>
+
+{% endblock %}

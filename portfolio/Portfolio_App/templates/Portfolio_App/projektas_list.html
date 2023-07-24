@@ -1,0 +1,49 @@
+{% extends "Portfolio_App/base.html" %}
+{% load static %}
+{% block "content" %}
+
+ <h1 class="pirma">Projektų sąrašas</h1> <br>
+
+
+<ul>
+    {% for projektas in object_list %}
+        <li>
+            {% if projektas.iliustracija %}
+            <a href="{{ prokjektas.id }}"><img src="{{ projektas.iliustracija.url }}" width="100"></a>
+             {% endif %}
+            <br>{{ projektas.pavadinimas }} <br>
+            <br>{{ projektas.aprasymas }} <br>
+            <br> Naudotos technologijos: {{ projektas.technologiju_sarasas }} <br>
+
+            <br> Nuoroda į projekto svetainę - <a href="{{projektas.projekto_svetaine}}" target="_blank">
+            <img src="{% static 'Portfolio_App/images/github.png' %}"  alt="Hithub" style="width:50px;">
+            </a>
+
+            <br> Nuoroda į pagrindini Githubo puslapį - <a href="{{projektas.githubo_nuoroda}}" target="_blank">
+            <img src="{% static 'Portfolio_App/images/github.png' %}"  alt="Hithub" style="width:50px;">
+            </a>
+
+        </li>
+    {% endfor %}
+</ul>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; pirmas</a>
+            <a href="?page={{ page_obj.previous_page_number }}">atgal</a>
+        {% endif %}
+
+        <span class="current">
+            {{ page_obj.number }} iš {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">pirmyn</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">paskutinis &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+
+{% endblock %}

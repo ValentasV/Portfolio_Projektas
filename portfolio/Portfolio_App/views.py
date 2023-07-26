@@ -1,6 +1,7 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 from .models import Profilis, Projektas
 
 #  render -
@@ -42,6 +43,18 @@ class ProjektasListView(ListView):
     paginate_by = 1
     template_name = 'projektas_list.html'
 
+
+class CreateProjektasView(LoginRequiredMixin, CreateView):
+    model = Projektas
+    fields = [ "iliustracija", "pavadinimas", "aprasymas", "technologiju_sarasas", "projekto_svetaine", "githubo_nuoroda" ]
+    success_url = '/Portfolio_App/profiliai/'
+
+
+# Naudotojo sukūrimas tik prisijunges naudotojas gali pildyti formą.
+    def form_valid(self, form):
+        naudotojo_profilis = Profilis.objects.get(naudotojas=self.request.user)
+        form.instance.naudotojas = naudotojo_profilis
+        return super().form_valid(form)
 
 
 # class ProjektasListView(ListView):

@@ -1,6 +1,6 @@
 {% extends "Portfolio_App/base.html" %}
 {% load static %}
-{% block "content" %}
+{% block content %}
 
  <h1 class="pirma">Projektų sąrašas</h1> <br>
 
@@ -26,6 +26,8 @@
         </li>
     {% endfor %}
 </ul>
+
+<a href="{% url 'projektas_create' %}">Pridėti naują projektą</a>
 
 <div class="pagination">
     <span class="step-links">
